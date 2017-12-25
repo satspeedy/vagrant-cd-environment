@@ -1,0 +1,86 @@
+= Vagrant Box for CD Environment
+This content is a project of https://github.com/satspeedy[satspeedy].
+
+The box contains the following components:
+
+* Distributed Version Control System (DVCS) -> Atlassian Bitbucket
+* Proxy Server -> Apache 2 (httpd)
+* Continuous Integration / Continuous Delivery (CI/CD) Tool -> Jenkins 2
+* Binary Repository -> Nexus 3
+
+based on the operating system ubuntu/trusty64.
+
+And consists of multiple machines:
+
+* 19.168.33.10
+** Proxy Server
+** DVCS
+** Binary Repository
+* 19.168.33.11
+** CI/CD Tool
+
+== Further structure
+
+
+== Setting up the runtime environment
+To setup of the environment, a  http://www.vagrantup.com[Vagrant] file is provided.
+
+To get started, please follow this recipe:
+
+1. Make sure your Computer allows VT-x. This can be set in your Bios under CPU options. Depending on the Bios you might enter during boot up using the F12 key
+2. Install http://www.vagrantup.com[Vagrant]. Optionally change your https://www.vagrantup.com/docs/other/environmental-variables.html[vagrant home directory] by setting the environment variable `VAGRANT_HOME`.
+3. Install http://www.virtualbox.org[VirtualBox] and install the VirtualBox Extension pack (available at the same location). Start Virtualbox if you want to change defaults like the directory where the images are stored! Make sure virtualization is enabled in the BIOS (VT-x)
+4. Install https://github.com/dotless-de/vagrant-vbguest[vagrant-vbguest] to ensure that vbguest versions from host and guest are identical. Run `vagrant plugin install vagrant-vbguest`.
+5. Open a new cmd prompt. Make sure your inside the project folder and enter `vagrant up`
+6. The components are then available. Follow the setup instructions of each component.
+
+Basically this should provide you an environment to use for development.
+
+== Vagrant box
+
+=== Restart the box
+
+Use
+
+    vagrant up
+
+to start up the vagrant box. You can check the status with `vagrant status`. 
+
+=== Stop the box
+
+Use
+
+    vagrant suspend
+
+to suspending the box. 
+
+=== Provision the box
+
+To run the provisioning again you have to enter in your host system 
+
+    vagrant provision
+
+or `vagrant up --provision` if the box was stopped. 
+
+=== Destroy the box
+
+Do destroy the box
+
+    vagrant destroy
+
+or `vagrant destroy & vagrant up` to set up the box after destroy.
+
+== Distributed Version Control System (DVCS) -> Atlassian Bitbucket
+
+== Proxy Server -> Apache 2 (httpd)
+https://httpd.apache.org/[Apache 2] is configured as a docker container inside the vagrant box and is running.
+
+== Continuous Integration / Continuous Delivery (CI/CD) Tool -> Jenkins 2
+
+== Binary Repository -> Nexus 3
+
+== Directory shares
+The subfolder `vagrant` from host system is shared with the guest systems.
+
+== Known Issues
+
