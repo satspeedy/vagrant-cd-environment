@@ -12,11 +12,11 @@ based on the operating system ubuntu/trusty64.
 
 And consists of multiple machines:
 
-* 19.168.33.10
+* 192.168.33.10
 ** Proxy Server
 ** DVCS
 ** Binary Repository
-* 19.168.33.11
+* 192.168.33.11
 ** CI/CD Tool
 
 == Further structure
